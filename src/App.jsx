@@ -1,8 +1,8 @@
 import React, {
-  useCallback, useEffect, useRef, useState,
+  useEffect, useRef, useState,
 } from 'react';
-import * as faceApi from 'face-api.js';
 import WebCam from './components/WebCam';
+import loadModels from './utils/faceApi';
 import './App.css';
 
 function App() {
@@ -46,67 +46,16 @@ function App() {
     }
   };
 
-  const faceDetection = useCallback(() => {
-    const { video } = webcamRef.current;
-    const canvas = canvasRef.current;
-    const displaySize = {
-      width: video.width,
-      height: video.height,
-    };
-    // console.log('displaySize', displaySize);
-    faceApi.matchDimensions(canvas, displaySize);
-
-    const detectionInterval = setInterval(async () => {
+  useEffect(() => {
+    if (isVideoLoaded) {
       try {
-        // Usa a "face-api.js" para detectar rostos na imagem da webcam
-        const detections = await faceApi
-          .detectAllFaces(video, new faceApi.TinyFaceDetectorOptions())
-          .withFaceLandmarks() // pontos de referência
-          .withFaceDescriptors() // descrição do rosto
-          .withFaceExpressions(); // expressões faciais
-
-        // Redimensiona as detecções para corresponder ao tamanho da webcam
-        const resizedDetections = faceApi.resizeResults(detections, displaySize);
-
-        // Limpa o conteúdo anterior do canvas
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-
-        // Desenha as detecções (bordas dos rostos) no canvas
-        faceApi.draw.drawDetections(canvas, resizedDetections);
-        // Desenha os landmarks (pontos de referência) no canvas
-        faceApi.draw.drawFaceLandmarks(canvas, resizedDetections);
-        // Desenha as expressões faciais no canvas
-        // faceApi.draw.drawFaceExpressions(canvas, resizedDetections);
-
-        verifyEmotion(detections[0].expressions);
-        setIsDetectionComplete(true);
+        loadModels(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete);
       } catch (error) {
         console.error('Erro na detecção de rosto:', error);
         setIsDetectionComplete(false);
       }
-    }, 100);
-
-    return () => clearInterval(detectionInterval);
-  }, []);
-
-  useEffect(() => {
-    const loadModels = () => {
-      Promise.all([
-        faceApi.nets.tinyFaceDetector.loadFromUri('/models'),
-        faceApi.nets.faceLandmark68Net.loadFromUri('/models'),
-        faceApi.nets.faceRecognitionNet.loadFromUri('/models'),
-        faceApi.nets.faceExpressionNet.loadFromUri('/models'),
-      ])
-        .then(faceDetection)
-        .catch((error) => {
-          console.error('Erro ao carregar modelos:', error);
-        });
-    };
-
-    if (isVideoLoaded) {
-      loadModels();
     }
-  }, [faceDetection, isVideoLoaded]);
+  }, [isVideoLoaded]);
 
   return (
     <>
