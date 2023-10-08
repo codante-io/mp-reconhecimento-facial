@@ -1,71 +1,45 @@
-import React, {
-  useEffect, useRef, useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import WebCam from './components/WebCam';
 import loadModels from './utils/faceApi';
+import Emoji from './components/Emoji';
 import './App.css';
 
 function App() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isDetectionComplete, setIsDetectionComplete] = useState(false);
-  const [emotion, setEmotion] = useState('');
+  const [message, setMessage] = useState('');
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
-  const renderEmoji = () => {
-    if (emotion === 'Você parece feliz!') {
-      return '😃';
-    }
-    if (emotion === 'Você parece triste.') {
-      return '😢';
-    }
-    if (emotion === 'Você parece surpreso!') {
-      return '😮';
-    }
-    return '😐';
-  };
-
   const verifyEmotion = (expressions) => {
     if (expressions) {
-      let message = '';
-      const {
-        happy, sad, surprised,
-      } = expressions;
+      const { happy, sad, surprised } = expressions;
+      let newMessage = '';
 
       if (surprised > 0.7) {
-        message = 'Você parece surpreso!';
+        newMessage = 'Você parece surpreso!';
       } else if (happy > 0.7) {
-        message = 'Você parece feliz!';
+        newMessage = 'Você parece feliz!';
       } else if (sad > 0.005) {
-        message = 'Você parece triste.';
+        newMessage = 'Você parece triste.';
       } else {
-        message = 'Você parece neutro.';
+        newMessage = 'Você parece neutro.';
       }
-
-      setEmotion(message);
+      setMessage(newMessage);
     }
   };
 
   useEffect(() => {
     if (isVideoLoaded) {
-      try {
-        loadModels(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete);
-      } catch (error) {
-        console.error('Erro na detecção de rosto:', error);
-        setIsDetectionComplete(false);
-      }
+      loadModels(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete);
     }
   }, [isVideoLoaded]);
 
   return (
     <>
       <h1>WebCam Emotional</h1>
-      {!isVideoLoaded && (
-        <div className="loading-indicator">Carregando modelos...</div>
-      )}
-      {isVideoLoaded && !isDetectionComplete && (
-        <div className="loading-indicator">Processando detecção...</div>
-      )}
+      {!isVideoLoaded && <p>Carregando modelos...</p>}
+      {isVideoLoaded && !isDetectionComplete && <p>Processando detecção...</p>}
 
       <section style={{
         display: 'flex',
@@ -80,10 +54,7 @@ function App() {
         </div>
 
         {isVideoLoaded && isDetectionComplete && (
-        <div className="emoji">
-          <span style={{ fontSize: '100px' }}>{renderEmoji()}</span>
-          <p>{emotion}</p>
-        </div>
+          <Emoji message={message} />
         )}
       </section>
     </>
