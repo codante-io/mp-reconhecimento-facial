@@ -1,12 +1,8 @@
 # WebCam Emotional App
 
----
-
 # Descrição
 
 Aplicação de reconhecimento facial com o intuito de traduzir as expressões e emoções do usuário.
-
----
 
 # Detalhes:
 
