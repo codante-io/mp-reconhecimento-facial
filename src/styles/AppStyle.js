@@ -5,7 +5,13 @@ export const AppContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  /* gap: 3rem; */
+
+  @media (max-width: 700px) {
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 
   > section.webcam-container {
     width: max-content;
@@ -18,6 +24,10 @@ export const AppContainer = styled.div`
     > canvas {
       position: absolute;
       margin-top: 4rem;
+
+      @media (max-width: 700px) {
+        margin-top: 2rem;
+      }
     }
   }
 
@@ -30,5 +40,11 @@ export const AppContainer = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 700px) {
+      margin: 0;
+      width: 100%;
+      height: 260px;
+    }
   }
 `;

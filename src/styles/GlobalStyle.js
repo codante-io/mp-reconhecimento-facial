@@ -12,8 +12,6 @@ export default createGlobalStyle`
     padding: 0;
     
     font-family: MochyPopOne, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
 
     ::-webkit-scrollbar {
       height: 8px;
@@ -39,9 +37,8 @@ export default createGlobalStyle`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
   }
-  
+
   #root {
     background-image: url('/images/ondas.png');
     background-repeat: no-repeat;
@@ -50,6 +47,10 @@ export default createGlobalStyle`
     
     min-height: 100vh;
     width: 100vw;
+
+    @media (max-width: 700px) {
+      background-size: auto;
+    }
   }
 
   h1 {
@@ -66,8 +67,17 @@ export default createGlobalStyle`
     align-items: center;
     gap: 2rem;
 
+    @media (max-width: 700px) {
+      font-size: 18px;
+      gap: 1rem;
+    }
+
     > img {
       width: 100px;
+
+      @media (max-width: 700px) {
+        width: 36px;
+      }
     }
   }
 
@@ -87,9 +97,19 @@ export default createGlobalStyle`
     align-items: center;
     gap: 0.5rem;
 
+    @media (max-width: 700px) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
     > img {
       width: 20px;
       height: 20px;
+
+      @media (max-width: 700px) {
+        width: 50px;
+        height: 50px;
+      }
     }
   }
 
@@ -103,9 +123,5 @@ export default createGlobalStyle`
     margin-bottom: 2rem;
     width: 100%;
     max-width: 85rem;
-
-    @media (max-width: 700px) {
-      gap: 2rem;
-    }
   }
 `;

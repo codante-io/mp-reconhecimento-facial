@@ -9,14 +9,24 @@ export const WebCamContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
 
+  @media (max-width: 700px) {
+    width: 275px;
+    height: 260px;
+  }
+
   > img {
     position: absolute;
     top: 0;
-    left: 5px;
     z-index: 1;
   }
 
   .webcam {
     margin-top: 4rem;
+
+    @media (max-width: 700px) {
+      margin-top: 2rem;
+      width: 230px;
+      height: 160px;
+    }
   }
 `;

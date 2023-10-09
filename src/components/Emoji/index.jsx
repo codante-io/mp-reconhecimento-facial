@@ -5,40 +5,24 @@ import { EmojiContainer } from './EmojiStyle';
 function Emoji({ message }) {
   const renderEmoji = () => {
     if (message === 'Você parece feliz!') {
-      return (
-        <div>
-          <img className="balloon-img" src="/images/happy-balloon.svg" alt="happy balloon" />
-          <img className="emoji-img" src="/images/happy.svg" alt="happy emoji" />
-        </div>
-      );
+      return '/images/happy.svg';
     }
     if (message === 'Você parece triste.') {
-      return (
-        <div>
-          <img className="balloon-img" src="/images/sad-balloon.svg" alt="sad balloon" />
-          <img className="emoji-img" src="/images/sad.svg" alt="sad emoji" />
-        </div>
-      );
+      return '/images/sad.svg';
     }
     if (message === 'Você parece surpreso!') {
-      return (
-        <div>
-          <img className="balloon-img" src="/images/surprised-balloon.svg" alt="surprised balloon" />
-          <img className="emoji-img" src="/images/surprised.svg" alt="surprised emoji" />
-        </div>
-      );
+      return '/images/surprised.svg';
     }
-    return (
-      <div>
-        <img className="balloon-img" src="/images/normal-balloon.svg" alt="normal balloon" />
-        <img className="emoji-img" src="/images/normal.svg" alt="normal emoji" />
-      </div>
-    );
+    return '/images/normal.svg';
   };
 
   return (
     <EmojiContainer>
-      {renderEmoji()}
+      <div>
+        <p>{message}</p>
+        <img className="balloon-img" src="/images/balloon.svg" alt="normal balloon" />
+      </div>
+      <img className="emoji-img" src={renderEmoji()} alt="Figura de um emoji" />
     </EmojiContainer>
   );
 }

@@ -1,26 +1,23 @@
 import React from 'react';
 import Cam from 'react-webcam';
 import proptypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 import { WebCamContainer } from './WebCamStyle';
 
-const videoConstraints = {
-  width: 550,
-  height: 400,
-  facingMode: 'user',
-};
-
 function WebCam({ webcamRef, setIsVideoLoaded }) {
+  const isMobile = useMediaQuery({ maxWidth: 700 });
+
   return (
     <WebCamContainer>
       <img src="/images/monitor.svg" alt="" />
       <Cam
         className="webcam"
-        audio={false}
-        videoConstraints={videoConstraints}
         ref={webcamRef}
         onLoadedMetadata={() => setIsVideoLoaded(true)}
-        width={550}
-        height={400}
+        width={isMobile ? 230 : 550}
+        height={isMobile ? 160 : 400}
+        autoPlay
+        muted
       />
     </WebCamContainer>
   );
