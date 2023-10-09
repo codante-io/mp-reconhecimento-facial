@@ -5,7 +5,7 @@ export const AppContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  gap: 3rem;
+  /* gap: 3rem; */
 
   > section.webcam-container {
     width: max-content;
@@ -19,5 +19,16 @@ export const AppContainer = styled.div`
       position: absolute;
       margin-top: 4rem;
     }
+  }
+
+  > section.emoji-container {
+    margin-left: 3rem;
+    width: 350px;
+    height: 500px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
   }
 `;

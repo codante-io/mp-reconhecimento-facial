@@ -59,6 +59,16 @@ export default createGlobalStyle`
     font-weight: 600;
     text-align: center;
     margin-bottom: 2rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    > img {
+      width: 100px;
+    }
   }
 
   img {

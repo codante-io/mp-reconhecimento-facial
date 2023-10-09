@@ -29,6 +29,26 @@ function App() {
     }
   };
 
+  const loadEmoji = () => {
+    if (!isVideoLoaded) {
+      return (
+        <p>
+          Carregando modelos...
+          <img src="/images/spinner.svg" alt="loading icon" />
+        </p>
+      );
+    }
+    if (!isDetectionComplete) {
+      return (
+        <p>
+          Processando detecção...
+          <img src="/images/spinner.svg" alt="loading icon" />
+        </p>
+      );
+    }
+    return <Emoji message={message} />;
+  };
+
   useEffect(() => {
     if (isVideoLoaded) {
       loadModels(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete);
@@ -37,19 +57,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1>WebCam Emotional</h1>
-      {!isVideoLoaded && (
-        <p>
-          Carregando modelos...
-          <img src="/images/spinner.svg" alt="loading icon" />
-        </p>
-      )}
-      {isVideoLoaded && !isDetectionComplete && (
-        <p>
-          Processando detecção...
-          <img src="/images/spinner.svg" alt="loading icon" />
-        </p>
-      )}
+      <h1>
+        <img src="/images/cam-logo.svg" alt="logotipo de uma câmera" />
+        WebCam Emotional
+      </h1>
 
       <AppContainer>
         <section className="webcam-container">
@@ -57,7 +68,7 @@ function App() {
           <canvas ref={canvasRef} />
         </section>
         <section className="emoji-container">
-          {isVideoLoaded && isDetectionComplete && <Emoji message={message} />}
+          {loadEmoji()}
         </section>
       </AppContainer>
     </div>
