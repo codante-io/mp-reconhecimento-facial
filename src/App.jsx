@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import WebCam from './components/WebCam';
 import loadModels from './utils/faceApi';
 import Emoji from './components/Emoji';
-import './App.css';
+import { AppContainer } from './styles/AppStyle';
 
 function App() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -36,28 +36,31 @@ function App() {
   }, [isVideoLoaded]);
 
   return (
-    <>
+    <div className="container">
       <h1>WebCam Emotional</h1>
-      {!isVideoLoaded && <p>Carregando modelos...</p>}
-      {isVideoLoaded && !isDetectionComplete && <p>Processando detecção...</p>}
+      {!isVideoLoaded && (
+        <p>
+          Carregando modelos...
+          <img src="/images/spinner.svg" alt="loading icon" />
+        </p>
+      )}
+      {isVideoLoaded && !isDetectionComplete && (
+        <p>
+          Processando detecção...
+          <img src="/images/spinner.svg" alt="loading icon" />
+        </p>
+      )}
 
-      <section style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '2rem',
-      }}
-      >
-        <div style={{ position: 'relative' }}>
+      <AppContainer>
+        <section className="webcam-container">
           <WebCam webcamRef={webcamRef} setIsVideoLoaded={setIsVideoLoaded} />
-          <canvas style={{ position: 'absolute', top: 0, left: 0 }} ref={canvasRef} />
-        </div>
-
-        {isVideoLoaded && isDetectionComplete && (
-          <Emoji message={message} />
-        )}
-      </section>
-    </>
+          <canvas ref={canvasRef} />
+        </section>
+        <section className="emoji-container">
+          {isVideoLoaded && isDetectionComplete && <Emoji message={message} />}
+        </section>
+      </AppContainer>
+    </div>
   );
 }
 
