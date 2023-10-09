@@ -78,7 +78,7 @@ export default createGlobalStyle`
 
   p {
     color: ${({ theme }) => theme.text};
-    font-size: 1rem;
+    font-size: 20px;
     text-align: center;
 
     display: flex;
