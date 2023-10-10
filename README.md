@@ -1,4 +1,4 @@
-# WebCam Emotional App
+# WebCam Emotions App
 
 # Descrição
 
