@@ -14,8 +14,8 @@ function WebCam({ webcamRef, setIsVideoLoaded }) {
         className="webcam"
         ref={webcamRef}
         onLoadedMetadata={() => setIsVideoLoaded(true)}
-        width={isMobile ? 295 : 550}
-        height={isMobile ? 395 : 400}
+        width={550}
+        height={400}
         autoPlay
         muted
       />

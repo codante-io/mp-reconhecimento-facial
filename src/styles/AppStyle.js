@@ -27,6 +27,8 @@ export const AppContainer = styled.div`
 
       @media (max-width: 700px) {
         margin-top: 0;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
       }
     }
   }
