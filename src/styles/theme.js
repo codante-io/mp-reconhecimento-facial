@@ -3,6 +3,7 @@ const theme = {
   background: '#2F88FF',
   text: '#FFFFFF',
   border: '#28242E',
+  shadow: '#c4c4c4',
 };
 
 export default theme;

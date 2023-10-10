@@ -14,7 +14,7 @@ export const AppContainer = styled.div`
   }
 
   > section.webcam-container {
-    width: max-content;
+    width: fit-content;
     position: relative;
     display: flex;
     flex-flow: column nowrap;
@@ -23,7 +23,7 @@ export const AppContainer = styled.div`
 
     > canvas {
       position: absolute;
-      margin-top: 4rem;
+      margin-top: 2rem;
 
       @media (max-width: 700px) {
         margin-top: 0;

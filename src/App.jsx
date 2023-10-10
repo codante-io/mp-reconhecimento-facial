@@ -59,7 +59,7 @@ function App() {
     <div className="container">
       <h1>
         <img src="/images/cam-logo.svg" alt="logotipo de uma câmera" />
-        WebCam Emotional
+        WebCam Emotions
       </h1>
 
       <AppContainer>
