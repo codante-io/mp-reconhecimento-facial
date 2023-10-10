@@ -16,7 +16,7 @@ function App() {
       const { happy, sad, surprised } = expressions;
       let newMessage = '';
 
-      if (sad > 0.01) {
+      if (sad > 0.1) {
         newMessage = 'Você parece triste!';
       } else if (surprised > 0.7) {
         newMessage = 'Você parece surpreso!';
