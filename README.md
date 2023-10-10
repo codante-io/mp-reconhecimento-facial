@@ -98,9 +98,10 @@ Dentro dos valores retornados pelo FaceAPI é possível notar um objeto de expre
 
 ## 🔨 Desafio extra para quem quer ir além
 
-  - Desenvolva um Loading com a mensagem `Carregando vídeo...` enquanto a WebCam não é ativada.
-  - Desenvolva um Loading com a mensagem `Processando detecção...` enquanto o FaceApi não detecta seu rosto.
-  - Crie um alerta de Erro inicialmente caso o site não tenha acesso a webcam com a mensagem `Não conseguimos acessar sua webcam!`, utilize da biblioteca [sweetalert2](https://sweetalert2.github.io/) para exibir o alerta customizado.
+  - Enquanto a WebCam não é ativada, desenvolva uma mensagem de Loading com a seguinte frase `Carregando vídeo...` em um parágrafo.
+  - Enquanto o FaceApi não detecta o seu rosto, desenvolva uma mensagem de Loading com a seguinte frase `Processando detecção...` em um parágrafo.
+  - Crie um alerta de Erro inicialmente caso o site não tenha acesso a webcam com a seguinte frase `Não conseguimos acessar sua webcam!`
+    - Você pode utilizar a biblioteca [sweetalert2](https://sweetalert2.github.io/) para exibir o alerta customizado.
   - Desenvolva novas reações e mensagens para as emoções de `angry` e `surprised`.
 
 
@@ -117,6 +118,7 @@ O projeto com o design inicial já estará disponível para você na branch prin
 ## 🔍 Dicas
 
 - Estude sobre componentização, estados e passagem de Props para os componentes do React.
+- Estude sobre renderização condicional para os componentes do React.
 - Estude sobre Styled Components caso queria aprimorar ou modificar os estilos sugeridos.
 - Não deixe de ler com calma a documentação das dependências que foram usadas.
 
