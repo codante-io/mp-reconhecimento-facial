@@ -20,7 +20,7 @@ function Emoji({ message }) {
     <EmojiContainer>
       <div>
         <p>{message}</p>
-        <img className="balloon-img" src="/images/balloon.svg" alt="normal balloon" />
+        <img className="balloon-img" src="/images/balloon.svg" alt="Figura de um balão" />
       </div>
       <img className="emoji-img" src={renderEmoji()} alt="Figura de um emoji" />
     </EmojiContainer>

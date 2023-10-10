@@ -20,7 +20,7 @@ function WebCam({ webcamRef, setIsVideoLoaded }) {
 
   return (
     <WebCamContainer>
-      {!isMobile && <img src="/images/monitor.svg" alt="" />}
+      {!isMobile && <img src="/images/monitor.svg" alt="Imagem de um monitor" />}
       <Cam
         className="webcam"
         ref={webcamRef}

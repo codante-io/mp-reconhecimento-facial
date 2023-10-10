@@ -34,7 +34,7 @@ function App() {
       return (
         <p>
           Carregando vídeo...
-          <img src="/images/spinner.svg" alt="loading icon" />
+          <img src="/images/spinner.svg" alt="Icone de loading" />
         </p>
       );
     }
@@ -42,7 +42,7 @@ function App() {
       return (
         <p>
           Processando detecção...
-          <img src="/images/spinner.svg" alt="loading icon" />
+          <img src="/images/spinner.svg" alt="Icone de loading" />
         </p>
       );
     }
@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="container">
       <h1>
-        <img src="/images/cam-logo.svg" alt="logotipo de uma câmera" />
+        <img src="/images/cam-logo.svg" alt="Logotipo de uma câmera" />
         WebCam Emotions
       </h1>
 
