@@ -4,13 +4,13 @@ import { EmojiContainer } from './EmojiStyle';
 
 function Emoji({ message }) {
   const renderEmoji = () => {
-    if (message === 'Você parece feliz!') {
+    if (message.includes('feliz')) {
       return '/images/happy.svg';
     }
-    if (message === 'Você parece triste.') {
+    if (message.includes('triste')) {
       return '/images/sad.svg';
     }
-    if (message === 'Você parece surpreso!') {
+    if (message.includes('surpreso')) {
       return '/images/surprised.svg';
     }
     return '/images/normal.svg';

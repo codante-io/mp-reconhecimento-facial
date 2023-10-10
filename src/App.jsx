@@ -16,14 +16,14 @@ function App() {
       const { happy, sad, surprised } = expressions;
       let newMessage = '';
 
-      if (surprised > 0.7) {
+      if (sad > 0.005) {
+        newMessage = 'Você parece triste!';
+      } else if (surprised > 0.7) {
         newMessage = 'Você parece surpreso!';
       } else if (happy > 0.7) {
         newMessage = 'Você parece feliz!';
-      } else if (sad > 0.005) {
-        newMessage = 'Você parece triste.';
       } else {
-        newMessage = 'Você parece neutro.';
+        newMessage = 'Você parece normal.';
       }
       setMessage(newMessage);
     }
