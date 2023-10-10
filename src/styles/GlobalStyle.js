@@ -123,5 +123,9 @@ export default createGlobalStyle`
     margin-bottom: 2rem;
     width: 100%;
     max-width: 85rem;
+
+    @media (max-width: 700px) {
+      gap: 1rem;
+    }
   }
 `;

@@ -7,15 +7,20 @@ import { WebCamContainer } from './WebCamStyle';
 function WebCam({ webcamRef, setIsVideoLoaded }) {
   const isMobile = useMediaQuery({ maxWidth: 700 });
 
+  const videoConstraints = {
+    facingMode: 'user',
+  };
+
   return (
     <WebCamContainer>
-      <img src="/images/monitor.svg" alt="" />
+      {!isMobile && <img src="/images/monitor.svg" alt="" />}
       <Cam
         className="webcam"
         ref={webcamRef}
         onLoadedMetadata={() => setIsVideoLoaded(true)}
-        width={isMobile ? 230 : 550}
-        height={isMobile ? 160 : 400}
+        videoConstraints={videoConstraints}
+        width={isMobile ? 295 : 550}
+        height={isMobile ? 225 : 400}
         autoPlay
         muted
       />

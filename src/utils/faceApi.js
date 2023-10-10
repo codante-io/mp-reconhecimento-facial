@@ -15,7 +15,6 @@ export const faceDetection = (webcamRef, canvasRef, verifyEmotion, setIsDetectio
       const detections = await faceApi
         .detectAllFaces(video, new faceApi.TinyFaceDetectorOptions())
         .withFaceLandmarks() // pontos de referência
-        .withFaceDescriptors() // descrição do rosto
         .withFaceExpressions(); // expressões faciais
 
       // Redimensiona as detecções para corresponder ao tamanho da webcam
@@ -42,7 +41,6 @@ const loadModels = (webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete)
   Promise.all([
     faceApi.nets.tinyFaceDetector.loadFromUri('/models'),
     faceApi.nets.faceLandmark68Net.loadFromUri('/models'),
-    faceApi.nets.faceRecognitionNet.loadFromUri('/models'),
     faceApi.nets.faceExpressionNet.loadFromUri('/models'),
   ])
     .then(() => faceDetection(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete))

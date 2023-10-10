@@ -26,7 +26,7 @@ export const AppContainer = styled.div`
       margin-top: 4rem;
 
       @media (max-width: 700px) {
-        margin-top: 2rem;
+        margin-top: 0;
       }
     }
   }

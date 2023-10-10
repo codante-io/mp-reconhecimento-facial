@@ -10,8 +10,12 @@ export const WebCamContainer = styled.div`
   align-items: center;
 
   @media (max-width: 700px) {
-    width: 275px;
-    height: 260px;
+    max-width: 300px;
+    max-height: 230px;
+
+    border: 10px solid ${({ theme }) => theme.border};
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   > img {
@@ -24,9 +28,9 @@ export const WebCamContainer = styled.div`
     margin-top: 4rem;
 
     @media (max-width: 700px) {
-      margin-top: 2rem;
-      width: 230px;
-      height: 160px;
+      margin: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 `;
