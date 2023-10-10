@@ -29,14 +29,14 @@ Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, c
 <details>
   <summary>Exemplo básico de uso</summary>
 ```javascript
-  <WebCam
-    onUserMedia={/*Evento ativado quando o vídeo é carregado com sucesso*/}
-    onUserMediaError={/*Evento ativado quando algum erro não carrega o vídeo*/}
-    width={600}
-    height={450}
-    autoPlay
-    muted
-  />
+<WebCam
+  onUserMedia={/*Evento ativado quando o vídeo é carregado com sucesso*/}
+  onUserMediaError={/*Evento ativado quando algum erro não carrega o vídeo*/}
+  width={600}
+  height={450}
+  autoPlay
+  muted
+/>
 ```
 </details>
 
