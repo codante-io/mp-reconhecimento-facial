@@ -1,60 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import WebCam from './components/WebCam';
-import loadModels from './utils/faceApi';
-import Emoji from './components/Emoji';
+import React from 'react';
 import { AppContainer } from './styles/AppStyle';
 
 function App() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [isDetectionComplete, setIsDetectionComplete] = useState(false);
-  const [message, setMessage] = useState('');
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
-
-  const verifyEmotion = (expressions) => {
-    if (expressions) {
-      const { happy, sad, surprised } = expressions;
-      let newMessage = '';
-
-      if (sad > 0.1) {
-        newMessage = 'Você parece triste!';
-      } else if (surprised > 0.7) {
-        newMessage = 'Você parece surpreso!';
-      } else if (happy > 0.7) {
-        newMessage = 'Você parece feliz!';
-      } else {
-        newMessage = 'Você parece normal.';
-      }
-      setMessage(newMessage);
-    }
-  };
-
-  const loadEmoji = () => {
-    if (!isVideoLoaded) {
-      return (
-        <p>
-          Carregando vídeo...
-          <img src="/images/spinner.svg" alt="Icone de loading" />
-        </p>
-      );
-    }
-    if (!isDetectionComplete) {
-      return (
-        <p>
-          Processando detecção...
-          <img src="/images/spinner.svg" alt="Icone de loading" />
-        </p>
-      );
-    }
-    return <Emoji message={message} />;
-  };
-
-  useEffect(() => {
-    if (isVideoLoaded) {
-      loadModels(webcamRef, canvasRef, verifyEmotion, setIsDetectionComplete);
-    }
-  }, [isVideoLoaded]);
-
   return (
     <div className="container">
       <h1>
@@ -64,11 +11,11 @@ function App() {
 
       <AppContainer>
         <section className="webcam-container">
-          <WebCam webcamRef={webcamRef} setIsVideoLoaded={setIsVideoLoaded} />
-          <canvas ref={canvasRef} />
+          {/* CHAME O SEU COMPONENTE WEBCAM AQUI */}
+          {/* CRIE O CANVAS AQUI */}
         </section>
         <section className="emoji-container">
-          {loadEmoji()}
+          {/* CHAME O SEU COMPONENTE EMOJI AQUI */}
         </section>
       </AppContainer>
     </div>

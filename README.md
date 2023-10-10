@@ -63,6 +63,7 @@ Agora você irá criar um elemento `canvas` que permite a renderização de grá
   - Após a captura é necessário desenhar o resultado no canvas
     - Tire as dúvidas de uso na documentação [Exibindo Resultados](https://github.com/justadudewhohacks/face-api.js#displaying-detection-results)
     - Lembre de limpar o canvas antes de cada novo desenho para não acumular resultado das detecções
+  - Execute a chamada da função `loadModels` assim que a pagina é carregada no Browser
 
 > Dicas 👊: É necessário que o código seja implementado dentro do setInterval a cada um décimo de segundo para que a detecção da face acompanhe os nossos movimentos.
 
