@@ -11,11 +11,12 @@ export const WebCamContainer = styled.div`
 
   @media (max-width: 700px) {
     max-width: 300px;
-    max-height: 230px;
+    max-height: 400px;
 
     border: 10px solid ${({ theme }) => theme.border};
     border-radius: 7px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: ${({ theme }) => theme.border};
   }
 
   > img {
@@ -28,7 +29,7 @@ export const WebCamContainer = styled.div`
     margin-top: 4rem;
 
     @media (max-width: 700px) {
-      margin: 0;
+      margin-top: 0;
       width: 100%;
       height: 100%;
     }
