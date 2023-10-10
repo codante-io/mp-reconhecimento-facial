@@ -28,6 +28,7 @@ Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, c
 
 <details>
   <summary>Exemplo básico de uso</summary>
+
 ```javascript
 <WebCam
   onUserMedia={/*Evento ativado quando o vídeo é carregado com sucesso*/}
@@ -38,6 +39,7 @@ Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, c
   muted
 />
 ```
+
 </details>
 
 ### Parte 01: Componente WebCam
