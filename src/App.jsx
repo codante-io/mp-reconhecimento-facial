@@ -33,7 +33,7 @@ function App() {
     if (!isVideoLoaded) {
       return (
         <p>
-          Carregando modelos...
+          Carregando vídeo...
           <img src="/images/spinner.svg" alt="loading icon" />
         </p>
       );
