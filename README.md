@@ -2,23 +2,25 @@
 
 Que tal criar sua própria aplicação de reconhecimento facial e dar vida às suas próprias expressões e emoções? 😃
 
-Neste projeto prático e divertido, usaremos como tecnologia o **Vite**, **React JS**, **Styled Components**, junto com a incrível **Face Api**, uma biblioteca JavaScript de código aberto construída com base no famoso TensorFlow.
+Neste projeto prático e divertido, usaremos como tecnologia o **Vite**, **React JS**, **Styled Components**, junto com a **Face Api**, uma biblioteca JavaScript de código aberto construída com base no famoso TensorFlow.
 
-Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, como as expressões faciais se relacionam com diferentes emoções, como felicidade, tristeza, surpresa e raiva. É uma oportunidade empolgante de aprender e se divertir explorando o mundo do reconhecimento facial de maneira prática e interativa. Vamos começar!"
+Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, como as expressões faciais se relacionam com diferentes emoções, como felicidade, tristeza, surpresa e raiva. É uma oportunidade para aprender e se divertir explorando o mundo do reconhecimento facial de maneira prática e interativa. Vamos começar!
 
 
 ## 🔨 Requisitos
 
-  - Realize o clone do repositório com o template inicial:
-    - `git clone git@github.com:codante-io/mp-webcam-emotions.git`
-  - Entre no diretório do projeto `cd webcam-emotions`
+### Parte 00: Setup Inicial
+
+O template inicial já vem com algumas coisas prontas para facilitar o desenvolvimento do mini projeto:
+
+  - Realize o fork do repositório com o template inicial
   - Instale as dependências do projeto `npm install`
   - Rode o projeto pela primeira vez `npm run dev`
 
 > OBS 👀: Todos os ícones e imagens já estão disponíveis no diretório `public/images`
 
 
-### Parte 01: Componente WebCam
+### Parte 01: Componente Webcam
 Neste componente você irá desenvolvedor o código responsável por habilitar a sua webcam e dimensionar a largura e altura do seu vídeo.
 
   - Dentro do diretório `src`, siga as instruções abaixo:
