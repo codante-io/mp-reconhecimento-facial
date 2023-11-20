@@ -1,4 +1,5 @@
 import React from 'react';
+import WebCam from './components/WebCam';
 import { AppContainer } from './styles/AppStyle';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
       <AppContainer>
         <section className="webcam-container">
-          {/* CHAME O SEU COMPONENTE WEBCAM AQUI */}
+          <WebCam />
           {/* CRIE O CANVAS AQUI */}
         </section>
         <section className="emoji-container">
