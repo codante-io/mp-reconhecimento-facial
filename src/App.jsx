@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import WebCam from './components/WebCam';
 import { AppContainer } from './styles/AppStyle';
+import loadModels from './utils/faceApi';
 
 function App() {
+  const canvasRef = useRef(null);
+  const webcamRef = useRef(null);
+
+  useEffect(() => {
+    loadModels(webcamRef, canvasRef);
+  }, []);
+
   return (
     <div className="container">
       <h1>
@@ -12,8 +20,8 @@ function App() {
 
       <AppContainer>
         <section className="webcam-container">
-          <WebCam />
-          {/* CRIE O CANVAS AQUI */}
+          <WebCam webcamRef={webcamRef} />
+          <canvas ref={canvasRef} width="600" height="450" />
         </section>
         <section className="emoji-container">
           {/* CHAME O SEU COMPONENTE EMOJI AQUI */}

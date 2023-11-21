@@ -11,9 +11,11 @@ export const faceDetection = (webcamRef, canvasRef) => {
   faceApi.matchDimensions(canvas, displaySize);
   setInterval(async () => {
     try {
-
-      // USAR A "FACE-API.JS" AQUI!
-
+      const detections = await faceApi.detectAllFaces(video, new faceApi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
+      const resizedDetections = faceApi.resizeResults(detections, displaySize);
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+      faceApi.draw.drawDetections(canvas, resizedDetections);
+      faceApi.draw.drawFaceLandmarks(canvas, resizedDetections);
     } catch (error) {
       console.log('Erro na detecção de rosto:', error.message);
     }
