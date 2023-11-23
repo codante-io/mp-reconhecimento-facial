@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Emoji from './components/Emoji';
 import WebCam from './components/WebCam';
 import { AppContainer } from './styles/AppStyle';
 import loadModels, { faceDetection } from './utils/faceApi';
@@ -7,6 +8,7 @@ function App() {
   const canvasRef = useRef(null);
   const webcamRef = useRef(null);
   const [expressionsData, setExpressionsData] = useState({});
+  const [isCameraActive, setIsCameraActive] = useState(true);
 
   const handleExpressions = (expressions) => {
     setExpressionsData(expressions);
@@ -22,18 +24,18 @@ function App() {
       });
   }, []);
 
-  const determineEmotion = () => {
-    const { happy, sad } = expressionsData;
+  useEffect(() => {
+    const checkCameraStatus = async () => {
+      try {
+        await navigator.mediaDevices.getUserMedia({ video: true });
+        setIsCameraActive(true);
+      } catch (error) {
+        setIsCameraActive(false);
+      }
+    };
 
-    if (happy > 0.7) {
-      return 'Você parece feliz!';
-    } if (sad > 0.1) {
-      return 'Você parece triste!';
-    }
-    return 'Você parece normal.';
-  };
-
-  const emotionMessage = determineEmotion();
+    checkCameraStatus();
+  }, []);
 
   return (
     <div className="container">
@@ -48,8 +50,14 @@ function App() {
           <canvas ref={canvasRef} width="600" height="450" />
         </section>
         <section className="emoji-container">
-          <p>{emotionMessage}</p>
-          {/* CHAME O SEU COMPONENTE EMOJI AQUI */}
+          {isCameraActive === false ? (
+            <p>
+              Carregando vídeo...
+              <img src="/images/spinner.svg" alt="loading icon" />
+            </p>
+          ) : (
+            <Emoji expressionsData={expressionsData} />
+          )}
         </section>
       </AppContainer>
     </div>

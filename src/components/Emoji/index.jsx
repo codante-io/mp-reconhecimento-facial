@@ -1,35 +1,65 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { EmojiContainer } from '../../styles/EmojiStyle';
 
-function Emoji() {
-  const [isCameraActive, setIsCameraActive] = useState(true);
+function Emoji({ expressionsData }) {
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
+  const {
+    happy,
+    sad,
+    angry,
+    surprised,
+  } = expressionsData;
 
   useEffect(() => {
-    const checkCameraStatus = async () => {
-      try {
-        await navigator.mediaDevices.getUserMedia({ video: true });
-        setIsCameraActive(true);
-      } catch (error) {
-        setIsCameraActive(false);
+    const determineEmotion = () => {
+      if (happy > 0.7) {
+        setTitle('Você parece feliz!');
+        setImage('happy');
+      } else if (sad > 0.1) {
+        setTitle('Você parece triste!');
+        setImage('sad');
+      } else if (angry > 0.2) {
+        setTitle('Você parece bravo!');
+        setImage('angry');
+      } else if (surprised > 0.3) {
+        setTitle('Você parece surpreso!');
+        setImage('surprised');
+      } else {
+        setTitle('Você parece normal!');
+        setImage('normal');
       }
     };
-
-    checkCameraStatus();
-  }, []);
+    determineEmotion();
+  }, [angry, happy, sad, surprised]);
 
   return (
     <EmojiContainer>
       {
-        isCameraActive === false
-        && (
-          <p>
-            Carregando vídeo...
-            <img src="/images/spinner.svg" alt="loading icon" />
-          </p>
+        Object.keys(expressionsData).length === 0 ? (
+          <p>Processando detecção...</p>
+        ) : (
+          <>
+            <div>
+              <p>{title}</p>
+              <img className="balloon-img" src="/images/balloon.svg" alt="normal balloon" />
+            </div>
+            <img className="emoji-img" src={`/images/${image}.svg`} alt="Figura de um emoji" />
+          </>
         )
       }
     </EmojiContainer>
   );
 }
+
+Emoji.propTypes = {
+  expressionsData: PropTypes.shape({
+    happy: PropTypes.number,
+    sad: PropTypes.number,
+    angry: PropTypes.number,
+    surprised: PropTypes.number,
+  }).isRequired,
+};
 
 export default Emoji;
