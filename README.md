@@ -1,84 +1,91 @@
-# WebCam Emotions App
+# Feely - Reconhecimento Facial com TensorFlow e React
 
-Que tal criar sua própria aplicação de reconhecimento facial e dar vida às suas próprias expressões e emoções? 😃
+Você faz parte da equipe da _Feely_ 🟡, uma hipotética _startup_ cujo produto principal é um reconhecimento facial que capta as expressões e emoções dos seus usuário. 😃
 
-Neste projeto prático e divertido, usaremos como tecnologia o **Vite**, **React JS**, **Styled Components**, junto com a **Face Api**, uma biblioteca JavaScript de código aberto construída com base no famoso TensorFlow.
+Neste projeto prático e divertido, usaremos como tecnologias o **React** com **Typescript**, **Vite**, **TailwindCSS**, junto com a **Face Api**, uma biblioteca JavaScript de código aberto construída com base no famoso **TensorFlow**.
 
-Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, como as expressões faciais se relacionam com diferentes emoções, como felicidade, tristeza, surpresa e raiva. É uma oportunidade para aprender e se divertir explorando o mundo do reconhecimento facial de maneira prática e interativa. Vamos começar!
+Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, como as expressões faciais se relacionam com diferentes emoções, como felicidade, tristeza, surpresa e raiva. É uma oportunidade para aprender e se divertir explorando o mundo do reconhecimento facial de maneira prática e interativa.
 
 ## 🤓 Antes de começar
-Esse Mini Projeto contém um boilerplate inicial, ou seja, algumas partes do código já estão prontas para que você possoa focar nas tecnologias principais.
 
-Caso você prefira começar do zero, não tem problema, basta utilizar outra *branch* ou apagar os arquivos.
+Esse Mini Projeto contém um template inicial para você focar nas tecnologias principais. Dessa forma você não precisará de muito tempo para a parte de HTML e CSS.
 
-Caso você utilize o boilerplate, atente-se à estrutura do código.
+Caso você prefira começar do zero, não tem problema, basta apagar os arquivos.
 
 ## 🔨 Requisitos
+
 - Exiba a Webcam do usuário na tela.
-  - A webcam deverá ser exibida nas dimensões de **600px** por **450px**.
+
+  - Este é o primeiro requisito básico.
+  - A webcam deverá ser exibida no local determinado no projeto.
   - Exiba o texto **Carregando vídeo...** enquanto a câmera não é ativada.
 
   > 👀 **Dicas:**
-  >  - Utilize a biblioteca `react-webcam` que já está instalada no projeto.
-  >  - Utilize o arquivo /src/components/WebCam
+  >
+  > - Utilize a `Media Stream API` do browser, a implementação é relativamente simples.
 
-
+- Exiba um _spinner_ enquanto a `FaceAPI` não detecta o rosto.
 - Utilize a `FaceAPI` para reconhecer a face do usuário e exibir seus contornos de forma dinâmica.
-  - Exiba o texto **Processando detecção...** enquanto a FaceAPI não detecta o rosto.
   
+  - Existem alguns passos para que a `FaceAPI` funcione corretamente:
+  
+    - 1. Você precisará carregar os modelos do TensorFlow usando a `FaceAPI`. Os modelos já estão no respositório no caminho `/public/models`
+    - 2. Em seguida, você irá fazer a detecção do rosto usando o método correspondente da `FaceAPI`  
+    - 3. Você também deverá usar o método da `FaceAPI` que "desenha" o a captura na tela. O desenho será feito em um `<canvas>` que estará sobreposto ao vídeo.
+    - 4. Por fim, você deverá capturar a expressão mais provável da face detectada para que ela seja utilizada no card de resultado da aplicação.
+    - 5. Não se esqueça que a detecção deve ocorrer em _tempo real_, isto é, deverá ocorrer a cada X segundos (ou milissegundos, como preferir).
+
   > 👀 **Dicas:**
-  >  -  No arquivo `/utils/faceApi.js` você irá desenvolver a lógica necessária;
-  >  - A função loadModels já está implementada importando os modelos de dados necessários;
-  >  - Implemente a funcão `faceDetection` e utilize a documentação como base;
-  >     - Tire as dúvidas de uso na documentação [Reconhecendo Expressões](https://github.com/justadudewhohacks/face-api.js#recognizing-face-expressions);
-  >  - Após a captura é necessário desenhar o resultado no canvas;
-  >     - Tire as dúvidas de uso na documentação [Exibindo Resultados](https://github.com/justadudewhohacks/face-api.js#displaying-detection-results);
+  >
+  > - Tire as dúvidas de uso na documentação [Reconhecendo Expressões](https://github.com/justadudewhohacks/face-api.js#recognizing-face-expressions);
+  > - Após a captura é necessário desenhar o resultado no canvas;
+  > - Tire as dúvidas de uso na documentação [Exibindo Resultados](https://github.com/justadudewhohacks/face-api.js#displaying-detection-results);
+  > - Talvez a forma mais eficaz para "aprender" a `FaceAPI` é rodando algum dos exemplos presentes no repositório.
 
-
-- Com base na detecção da face, exiba a emoção do usuário. Foque em 3 principais emoções: `Feliz`, `Triste` e `Neutro`. 
-  - Utilize as condições abaixo como base:
-    - Se `happy` for maior que `0.7` exiba `'Você parece feliz!'`;
-    - Se `sad` for maior que `0.1` exiba `'Você parece triste!'`;
-    - Se nenhuma opção for atendida exiba `'Você parece normal.'`;
-  - Exiba um Emoji correspondendo a emoção do usuário.
+- Exiba um Emoji correspondendo a emoção do usuário e uma frase de efeito de acordo com a expressão:
+  
+  - _Feliz_: Você está **feliz**. Aproveite!
+  - _Triste_: Você está um pouco **triste** hoje..
+  - _Brava_: Por que a expressão **brava**?
+  - _Surpresa_: Parece que há alguma **surpresa** por aí!
+  - _Medo_: Do que você tem **medo**?
+  - _Enjoada_: Sua expressão é **enjoada**.
 
 - Faça o deploy da sua solução e submeta no Codante.
-
-
-## 🔨 Desafio extra para quem quer ir além
-
-  - Crie um alerta de Erro inicialmente caso o site não tenha acesso a webcam com a seguinte frase `Não conseguimos acessar sua webcam!`. Você pode utilizar a biblioteca [sweetalert2](https://sweetalert2.github.io/) para exibir o alerta customizado;
-  - Desenvolva novas reações e mensagens para as emoções de `angry` e `surprised`;
-
-
-## 💻 Setup do projeto
-
-O projeto com o design inicial já estará disponível para você na branch principal do repositório. Sua responsabilidade será apenas de implementar a lógica de acordo com o passo a passo acima.
-
 
 ## 🔍 Dicas
 
 - Estude sobre componentização, estados e passagem de Props para os componentes do React.
-- Estude sobre renderização condicional para os componentes do React.
-- Estude sobre Styled Components caso queria aprimorar ou modificar os estilos sugeridos.
+- Esse Mini Projeto é uma ótima forma de treinar manipulação do `DOM` com `refs` no _React_ caso você opte por componentizar algumas partes da aplicação.
 - Não deixe de ler com calma a documentação das dependências que foram usadas.
-
 
 ## 🎨 Design Sugerido
 
-Temos uma sugestão de design no Figma. Entretanto, fique à vontade para montar a aplicação conforme a sua criatividade.
+Temos uma sugestão de design no Figma. Mas claro, fique à vontade para montar a aplicação conforme a sua criatividade.
 
 ### Figma
 
-🔗 [Link do design](https://www.figma.com/community/file/1293635877881660380)
-
+🔗 [Link do design](https://www.figma.com/community/file/1331723409593653011/mini-projeto-reconhecimento-facial)
 
 ## 👉🏽 Sobre esse mini-projeto
 
-### Tecnologias 
+### O que você irá praticar
 
-- **Tecnologias:**
-  - `React JS`;
-  - `Styled Components`;
-  - `react-webcam`;
-  - `face-api.js`;
+#### Media Stream API (Browser)
+
+- Capturar e exibir uma webcam no navegador
+
+#### React
+
+- Refs e manipulação do DOM
+- Componentização
+- useEffect e useState
+
+#### TailwindCSS
+
+- Habilidades básicas de estilização com a biblioteca
+
+#### TensorFlow (FaceApi)
+
+- Vamos utilizar uma biblioteca que está construída com base no TensorFlow
+- Praticar com as APIs de alto nível da biblioteca `FaceAPI`
