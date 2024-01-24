@@ -10,6 +10,8 @@ Com esta aplicação, você poderá ver em tempo real, por meio de sua webcam, c
 
 Esse Mini Projeto contém um template inicial para você focar nas tecnologias principais. Dessa forma você não precisará de muito tempo para a parte de HTML e CSS.
 
+As duas fontes que serão utilizadas (_Fresca_ e _Roboto Condensed_) já estão instaladas e configuradas como `display` e `secondary`. Dá uma olhada no `tailwind.config.js` quando for utilizá-las 
+
 Caso você prefira começar do zero, não tem problema, basta apagar os arquivos.
 
 ## 🔨 Requisitos
@@ -18,7 +20,6 @@ Caso você prefira começar do zero, não tem problema, basta apagar os arquivos
 
   - Este é o primeiro requisito básico.
   - A webcam deverá ser exibida no local determinado no projeto.
-  - Exiba o texto **Carregando vídeo...** enquanto a câmera não é ativada.
 
   > 👀 **Dicas:**
   >
