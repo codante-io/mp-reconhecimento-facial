@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./components/Header";
 import LoadingSpinner from "./components/LoadingSpinner";
 import * as faceapi from "face-api.js";
